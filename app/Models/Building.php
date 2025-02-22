@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Building extends Model
 {
@@ -40,8 +42,12 @@ class Building extends Model
      *
      * @var array<string, string>
      */
-    // protected $casts = [
-    //     'created_at' => 'datetime:d/m/Y H:i:s',
-    //     'updated_at' => 'datetime:d/m/Y H:i:s',
-    // ];
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y H:i:s',
+        'updated_at' => 'datetime:d/m/Y H:i:s',
+    ];
+
+    public function tasks() : HasMany {
+        return $this->hasMany(Task::class, 'building_id');
+    }
 }

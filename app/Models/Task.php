@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Task extends Model
 {
@@ -40,4 +41,9 @@ class Task extends Model
         'created_at' => 'datetime:d/m/Y H:i:s',
         'updated_at' => 'datetime:d/m/Y H:i:s',
     ];
+
+    public function build(): BelongsTo
+    {
+        return $this->belongsTo(Building::class, 'building_id', 'id');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
@@ -16,7 +17,7 @@ class Comment extends Model
      */
     protected $fillable = [
         'id',
-        'building_id',
+        'task_id',
         'name',
         'description',
     ];
@@ -40,4 +41,9 @@ class Comment extends Model
         'created_at' => 'datetime:d/m/Y H:i:s',
         'updated_at' => 'datetime:d/m/Y H:i:s',
     ];
+
+    public function build(): BelongsTo
+    {
+        return $this->belongsTo(Task::class, 'task_id', 'id');
+    }
 }
