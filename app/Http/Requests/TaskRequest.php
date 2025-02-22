@@ -33,6 +33,11 @@ class TaskRequest extends FormRequest
                 ($this->isMethod('put') ? 'required' : 'nullable'),
                 'integer'
             ],
+            'user_id' => [
+                'required',
+                'integer',
+                'exists:users,id'
+            ],
             'building_id' => [
                 'required',
                 'integer',
@@ -61,8 +66,10 @@ class TaskRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'task_id.required' => __('The :attribute id field is required.', ['attribute' => __('task')]),
-            'building_id.required' => __('The :attribute id field is required.', ['attribute' => __('building')]),
+            'task_id.required' => __('The task id field is required.'),
+            'user_id.required' => __('The user id field is required.'),
+            'user_id.exists' => __('The selected user id is invalid.'),
+            'building_id.required' => __('The building id field is required.'),
             'building_id.exists' => __('The selected building id is invalid.'),
             'name.required' => __('The :attribute field is required.', ['attribute' => __('task')]),
             'name.unique' => __('There is already a :attribute with this name.', ['attribute' => __('task')]),
