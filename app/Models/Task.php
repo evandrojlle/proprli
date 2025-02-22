@@ -19,6 +19,7 @@ class Task extends Model
      */
     protected $fillable = [
         'id',
+        'user_id',
         'building_id',
         'name',
         'description',
@@ -47,6 +48,11 @@ class Task extends Model
     public function build(): HasOne
     {
         return $this->hasOne(Building::class);
+    }
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
     }
 
     public function comments(): HasMany

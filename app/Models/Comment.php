@@ -18,6 +18,7 @@ class Comment extends Model
      */
     protected $fillable = [
         'id',
+        'user_id',
         'task_id',
         'name',
         'description',
@@ -46,5 +47,10 @@ class Comment extends Model
     public function task(): HasOne
     {
         return $this->hasOne(Task::class);
+    }
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
     }
 }
