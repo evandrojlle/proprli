@@ -25,6 +25,8 @@ class Building extends Model
         'city',
         'state',
         'country',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -33,8 +35,6 @@ class Building extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
     ];
 
     /**
@@ -43,11 +43,12 @@ class Building extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'created_at' => 'datetime:d/m/Y H:i:s',
-        'updated_at' => 'datetime:d/m/Y H:i:s',
+        'created_at' => 'datetime:d/m/Y \a\t H:i:s',
+        'updated_at' => 'datetime:d/m/Y \a\t H:i:s',
     ];
 
-    public function tasks() : HasMany {
+    public function tasks(): HasMany
+    {
         return $this->hasMany(Task::class, 'building_id');
     }
 }

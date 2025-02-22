@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
+use App\Models\Building;
 use App\Models\Task;
 use App\Traits\Log;
 use Carbon\Carbon;
@@ -12,6 +13,35 @@ use Illuminate\Http\Request;
 class TasksController extends Controller
 {
     use Log;
+
+    public function get(int $building_id)
+    {
+        try {
+            $building = Building::filters(['id' => $building_id])->with('tasks')->first();
+            if (! $building) {
+                return response()->json([
+                    'message' => __('Building not found.'),
+                    'data' => []
+                ], 200);
+            }
+
+            foreach ($building->tasks as &$task) {
+                $task->comments;
+            }
+
+            return response()->json([
+                'message' => __('Show item found.'),
+                'data' => $building,
+            ], 200);
+        } catch (\Exception $e) {
+            Log::save('error', $e);
+
+            return response()->json([
+                'message' => 'error',
+                'error' => __('Ops! An error occurred while performing this action.')
+            ], 500);
+        }
+    }
 
     /**
      * Create User

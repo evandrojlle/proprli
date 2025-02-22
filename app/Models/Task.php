@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Task extends Model
 {
@@ -20,6 +22,8 @@ class Task extends Model
         'building_id',
         'name',
         'description',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -28,8 +32,6 @@ class Task extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
     ];
 
     /**
@@ -38,12 +40,17 @@ class Task extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'created_at' => 'datetime:d/m/Y H:i:s',
-        'updated_at' => 'datetime:d/m/Y H:i:s',
+        'created_at' => 'datetime:d/m/Y \a\t H:i:s',
+        'updated_at' => 'datetime:d/m/Y \a\t H:i:s',
     ];
 
-    public function build(): BelongsTo
+    public function build(): HasOne
     {
-        return $this->belongsTo(Building::class, 'building_id', 'id');
+        return $this->hasOne(Building::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'task_id');
     }
 }
