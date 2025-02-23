@@ -1,0 +1,112 @@
+[
+	{
+        "name": "Burj Khalifa",
+		"address": "Sheikh Mohammed bin Rashid Blvd",
+		"number": "1",
+		"neighborhood": "Downtown Dubai",
+		"city": "Dubai",
+		"state": "DB",
+		"country": "Emirados Árabes Unidos",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Empire State Building",
+		"address": "Fifth Avenue",
+		"number": "350",
+		"neighborhood": "Manhattan",
+		"city": "New York",
+		"state": "NY",
+		"country": "Estados Unidos",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Musée Du Louvre",
+		"address": "Librairie-Boutique du Musée du Louvre",
+		"number": "75001",
+		"neighborhood": "Palais du Louvre",
+		"city": "Paris",
+		"state": "",
+		"country": "França",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Taj Mahal",
+		"address": "",
+		"number": "",
+		"neighborhood": "",
+		"city": "Agra",
+		"state": "",
+		"country": "Índia",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "The Shard Londres",
+		"address": "London Bridge Street",
+		"number": "32",
+		"neighborhood": "Grande Londres",
+		"city": "Londres",
+		"state": "LD",
+		"country": "Inglaterra",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Catedral de Notre Dame",
+		"address": "Parvis Notre-Dame - Pl. Jean-Paul II",
+		"number": "75004",
+		"neighborhood": "Paris",
+		"city": "Paris",
+		"state": "",
+		"country": "França",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Igreja de Hallgrímur",
+		"address": "Hallgrímstorg 1",
+		"number": "101",
+		"neighborhood": "Reykjavík",
+		"city": "Reykjavík",
+		"state": "",
+		"country": "Islândia",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Torre Agbar",
+		"address": "Avenida Diagonal",
+		"number": "209",
+		"neighborhood": "El Poblenou",
+		"city": "Barcelona",
+		"state": "",
+		"country": "Espanha",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Petronas Twin Towers",
+		"address": "",
+		"number": "",
+		"neighborhood": "",
+		"city": "Kuala Lumpur",
+		"state": "",
+		"country": "Malásia",
+        "created_at": null,
+        "updated_at": null
+	},
+	{
+        "name": "Palacio Salvo",
+		"address": "Avenida 18 de Julio - Praça Independência",
+		"number": "848",
+		"neighborhood": "Centro",
+		"city": "Montevidéu",
+		"state": "",
+		"country": "Uruguai",
+        "created_at": null,
+        "updated_at": null
+	}
+]

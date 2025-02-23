@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Building;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BuildingSeeder extends Seeder
 {
@@ -13,6 +14,16 @@ class BuildingSeeder extends Seeder
      */
     public function run(): void
     {
-        Building::factory()->count(20)->create();
+        $table = 'buildings';
+        $json = file_get_contents('./database/json/buildings.json');
+        $buildings = json_decode($json);
+        foreach ($buildings as $building) {
+            $data = (array) $building;
+            $data['created_at'] = now()->format('Y-m-d H:i:s');
+            $row = DB::table($table)->select()->where('name', '=', $data['name'])->first();
+            if (! $row) {
+                DB::table($table)->insert($data);
+            }
+        }
     }
 }
