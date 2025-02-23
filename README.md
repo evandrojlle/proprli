@@ -38,6 +38,10 @@ Our clients operate in the real estate sector, managing multiple buildings withi
 ### Download the project from the GitHub repository.
 - The project must be downloaded from the Github repository using the command below, through your terminal:
 ```git
+git clone https://github.com/evandrojlle/proprli.git
+```
+or
+```git
 git clone git@github.com:evandrojlle/proprli.git
 ```
 
