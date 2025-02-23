@@ -58,6 +58,7 @@ class CommentsController extends Controller
             $task = Task::filters(['id' => $task_id])->with('comments')->first();
             if (! $task) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('Task not found.'),
                     'data' => []
                 ], 200);
@@ -66,6 +67,7 @@ class CommentsController extends Controller
             $task->status_name = Status::from($task->status)->name;
 
             return response()->json([
+                'success' => true,
                 'message' => __('Show item found.'),
                 'data' => $task,
             ], 200);
@@ -73,6 +75,7 @@ class CommentsController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => 'error',
                 'error' => __('Ops! An error occurred while performing this action.')
             ], 500);
@@ -98,12 +101,14 @@ class CommentsController extends Controller
             $comment->save();
             if (! $comment->id) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('An error occurred while saving the comment.'),
                     'data' => []
                 ], 200);
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Task created successfully.'),
                 'data' => [
                     'id' => $comment->id,
@@ -113,6 +118,7 @@ class CommentsController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
             ], 200);
@@ -147,12 +153,14 @@ class CommentsController extends Controller
             $comment->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             if (! $comment->save()) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('An error occurred while saving the comment.'),
                     'data' => []
                 ], 200);
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Comment updated successfully.'),
                 'data' => [
                     'id' => $id,
@@ -163,6 +171,7 @@ class CommentsController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
             ], 200);

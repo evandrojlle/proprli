@@ -28,13 +28,15 @@ class AuthController extends Controller
              $dataUser = User::userByEmail($credentials['email'], true);
              if (! $dataUser) {
                 return response()->json([
-                    'message' => __('No user found with this CPF. Register to continue.'),
+                    'success' => false,
+                    'message' => __('No user found with this email. Register to continue.'),
                     'data' => [],
                 ], 200);
             }
 
             if (!$dataUser || !Hash::check($credentials['password'], $dataUser['password'])) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('Invalid credentials!'),
                     'data' => [],
                 ], 200);
@@ -43,14 +45,16 @@ class AuthController extends Controller
             $token = $dataUser->createToken('token', ['*'], Carbon::now()->addMinutes(config('sanctum.expiration')))->plainTextToken;
 
             return response()->json([
+                'success' => true,
                 'token' => $token,
-                'user' => $dataUser->only(['id', 'name', 'cpf', 'email']),
+                'user' => $dataUser->only(['id', 'name', 'email']),
                 'message' => __('Authentication successfully!'),
             ]);
         } catch (\Exception $e) {
             Log::save('error', $e);
     
             return response()->json([
+                'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
             ], 200);

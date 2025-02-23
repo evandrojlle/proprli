@@ -21,6 +21,7 @@ class TasksController extends Controller
             $building = Building::filters(['id' => $building_id])->with('tasks')->first();
             if (! $building) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('Building not found.'),
                     'data' => []
                 ], 200);
@@ -32,6 +33,7 @@ class TasksController extends Controller
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Show item found.'),
                 'data' => $building,
             ], 200);
@@ -39,6 +41,7 @@ class TasksController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => 'error',
                 'error' => __('Ops! An error occurred while performing this action.')
             ], 500);
@@ -59,12 +62,14 @@ class TasksController extends Controller
             $tasks  = Task::filters($filters, ['name', 'description'])->with('build', 'comments')->get();
             if (! $tasks) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('Tasks not found.'),
                     'data' => []
                 ], 200);
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Show items found.'),
                 'data' => $tasks,
             ], 200);
@@ -72,6 +77,7 @@ class TasksController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => 'error',
                 'error' => __('Ops! An error occurred while performing this action.')
             ], 500);
@@ -97,12 +103,14 @@ class TasksController extends Controller
             $tasks->save();
             if (! $tasks->id) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('An error occurred while saving the task.'),
                     'data' => []
                 ], 200);
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Task created successfully.'),
                 'data' => [
                     'id' => $tasks->id,
@@ -112,6 +120,7 @@ class TasksController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
             ], 200);
@@ -146,12 +155,14 @@ class TasksController extends Controller
             $task->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             if (! $task->save()) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('An error occurred while saving the task.'),
                     'data' => []
                 ], 200);
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Task updated successfully.'),
                 'data' => [
                     'id' => $id,
@@ -162,6 +173,7 @@ class TasksController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
             ], 200);
