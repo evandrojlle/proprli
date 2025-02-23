@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Status;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TaskRequest extends FormRequest
 {
@@ -11,6 +13,17 @@ class TaskRequest extends FormRequest
     const NAME_MAX = 150;
 
     const DESCRIPTION_MAX = 1000;
+
+    protected $allowedStatus;
+
+    public function __construct()
+    {
+        $this->allowedStatus = array_map(function($c)
+        {
+            return $c->value;
+        },Status::cases());
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -27,7 +40,6 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         $id = $this->request->get('task_id');
-
         $rules = [
             'task_id' => [
                 ($this->isMethod('put') ? 'required' : 'nullable'),
@@ -55,6 +67,11 @@ class TaskRequest extends FormRequest
                 'string',
                 'max:' . self::DESCRIPTION_MAX,
             ],
+            'status' => [
+                ($this->isMethod('put') ? 'required' : 'nullable'),
+                'integer',
+                Rule::in($this->allowedStatus)
+            ],
         ];
 
         return $rules;
@@ -76,6 +93,8 @@ class TaskRequest extends FormRequest
             'name.min' => __('The :attribute must be at least :min characters.', ['attribute' => __('task'), 'min' => self::NAME_MIN]),
             'name.max' => __('The :attribute may not be greater than :max characters.', ['attribute' => __('task'), 'max' => self::NAME_MAX]),
             'description.max' => __('The :attribute may not be greater than :max characters.', ['attribute' => __('task'), 'max' => self::DESCRIPTION_MAX]),
+            'status.required' => __('The status field is required.'),
+            'status.in' => __('The status field must exist in allowed status: ' . implode(', ', $this->allowedStatus))
         ];
     }
 }

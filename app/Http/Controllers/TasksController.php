@@ -44,7 +44,7 @@ class TasksController extends Controller
     }
 
     /**
-     * Create User
+     * Create Task
      *
      * @param TaskRequest $request - Request form data
      * @return JsonResponse
@@ -73,6 +73,56 @@ class TasksController extends Controller
                     'id' => $tasks->id,
                 ]
             ], 200);
+        } catch (\Exception $e) {
+            Log::save('error', $e);
+
+            return response()->json([
+                'message' => __('Ops! An error occurred while performing this action.'),
+                'data' => [],
+            ], 200);
+        }
+    }
+
+    /**
+     * Update Task
+     *
+     * @param TaskRequest $request - Request form data
+     * @return JsonResponse
+     */
+    public function update(TaskRequest $request): JsonResponse
+    {
+        try {
+            $validated = $request->validated();
+            $id = $validated['task_id'];
+            $task = Task::getById($id);
+            if (! $task) {
+                return response()->json([
+                    'message' => __('Task not found.'),
+                    'data' => []
+                ], 200);
+            }
+
+            foreach ($validated as $key => $value) {
+                if ($key !== 'task_id') {
+                    $task->$key = $value;
+                }
+            }
+
+            $task->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            if (! $task->save()) {
+                return response()->json([
+                    'message' => __('An error occurred while saving the task.'),
+                    'data' => []
+                ], 200);
+            }
+
+            return response()->json([
+                'message' => __('Task updated successfully.'),
+                'data' => [
+                    'id' => $id,
+                ]
+            ], 200);
+
         } catch (\Exception $e) {
             Log::save('error', $e);
 

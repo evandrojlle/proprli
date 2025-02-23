@@ -20,6 +20,7 @@ Route::post('auth', [AuthController::class, 'auth']);
 
 Route::get('/tasks/list/{building_id}', [TasksController::class, 'get']);
 Route::post('/tasks/store', [TasksController::class, 'store']);
+Route::put('/tasks/update', [TasksController::class, 'update']);
 Route::middleware('auth:sanctum')->group(function() {
 });
 
