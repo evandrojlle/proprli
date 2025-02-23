@@ -46,14 +46,14 @@ class Task extends Model
         'updated_at' => 'datetime:d/m/Y \a\t H:i:s',
     ];
 
-    public function build(): HasOne
+    public function build(): BelongsTo
     {
-        return $this->hasOne(Building::class);
+        return $this->belongsTo(Building::class, 'building_id', 'id');
     }
 
-    public function user(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function comments(): HasMany

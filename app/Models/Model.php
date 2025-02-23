@@ -42,10 +42,21 @@ class Model extends EloquentModel
     public function scopeFilters(Builder $pQuery, array $pFilters = [], array $pLiked = []): void
     {
         foreach ($pFilters as $key => $value) {
-            $compareSignal = in_array($key, $pLiked) ? 'LIKE' : '=';
-            $value = (in_array($key, $pLiked)) ? "%{$value}%" : $value;
+            if ($key === 'initial') {
+                $signalCompare = '>=';
+                $key = 'created_at';
+            } elseif ($key === 'final') {
+                $signalCompare = '<=';
+                $key = 'created_at';
+            } elseif (in_array($key, $pLiked)) {
+                $signalCompare = 'LIKE';
+                $value = "%{$value}%";
+            } else {
+                $signalCompare = '=';
+            }
+
             $table = (str_contains($key, '.')) ? $key : ((isset($this->table) && ! empty($this->table)) ? "{$this->table}.{$key}" : $key);
-            $pQuery->where($table, $compareSignal, $value);
+            $pQuery->where($table, $signalCompare, $value);
         }
     }
 
