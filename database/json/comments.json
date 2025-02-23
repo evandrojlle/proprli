@@ -1,0 +1,30 @@
+[
+    {
+        "user_id": 18,
+        "task_id": 1,
+        "comment": "Open a request with the company that performs elevator maintenance",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 4,
+        "task_id": 2,
+        "comment": "Start task",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 4,
+        "task_id": 3,
+        "comment": "Done",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 10,
+        "task_id": 4,
+        "comment": "I need the contact details of the company that performs this service.",
+        "created_at": null,
+        "updated_at": null
+    }
+]

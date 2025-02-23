@@ -13,7 +13,7 @@
         "building_id": 6,
         "name": "Changing light bulbs",
         "description": "Changing the light bulbs in the main entrance",
-        "status": 1,
+        "status": 2,
         "created_at": null,
         "updated_at": null
     },
@@ -22,7 +22,7 @@
         "building_id": 6,
         "name": "chandelier cleaning",
         "description": "cleaning the main entrance chandeliers",
-        "status": 1,
+        "status": 3,
         "created_at": null,
         "updated_at": null
     },
@@ -40,7 +40,7 @@
         "building_id": 8,
         "name": "pruning",
         "description": "prune the trees and plants in the garden",
-        "status": 1,
+        "status": 2,
         "created_at": null,
         "updated_at": null
     },
