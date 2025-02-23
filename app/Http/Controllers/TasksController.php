@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Status;
 use App\Http\Requests\TaskRequest;
 use App\Models\Building;
 use App\Models\Task;
@@ -26,6 +27,7 @@ class TasksController extends Controller
             }
 
             foreach ($building->tasks as &$task) {
+                $task->status_name = Status::from($task->status)->name;
                 $task->comments;
             }
 
