@@ -1,0 +1,119 @@
+[
+    {
+        "user_id": 3,
+        "building_id": 1,
+        "name": "Elevator maintenance",
+        "description": "Carry out preventive maintenance on social elevators",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 4,
+        "building_id": 6,
+        "name": "Changing light bulbs",
+        "description": "Changing the light bulbs in the main entrance",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 4,
+        "building_id": 6,
+        "name": "chandelier cleaning",
+        "description": "cleaning the main entrance chandeliers",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 10,
+        "building_id": 2,
+        "name": "Cleaning the water tanks",
+        "description": "Cleaning and changing the float in all water tanks",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 21,
+        "building_id": 8,
+        "name": "pruning",
+        "description": "prune the trees and plants in the garden",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 21,
+        "building_id": 8,
+        "name": "Mow the grass",
+        "description": "Mowing the grass in the main garden and on the sides of the building",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 21,
+        "building_id": 8,
+        "name": "Changing the Vase",
+        "description": "Changing the plant pot at the entrance to the party room",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 35,
+        "building_id": 9,
+        "name": "Cleaning",
+        "description": "cleaning of common areas of the building",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 44,
+        "building_id": 4,
+        "name": "Changing curtains",
+        "description": "Changing the curtains in the main hall",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 20,
+        "building_id": 3,
+        "name": "Bathroom Cleaning",
+        "description": "Cleaning of bathrooms in all visiting areas",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 15,
+        "building_id": 5,
+        "name": "Reception replacement",
+        "description": "Replace current receptionists with self-service kiosks",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 13,
+        "building_id": 7,
+        "name": "Armchair repair",
+        "description": "Repair of seats 5 in the third row and 7 in the ninth row of the church nave",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "user_id": 13,
+        "building_id": 10,
+        "name": "Door stuck",
+        "description": "The main door of the palace is dragging on the floor.",
+        "status": 1,
+        "created_at": null,
+        "updated_at": null
+    }
+]
