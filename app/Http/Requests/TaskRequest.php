@@ -88,7 +88,7 @@ class TaskRequest extends FormRequest
             'user_id.exists' => __('The selected user id is invalid.'),
             'building_id.required' => __('The building id field is required.'),
             'building_id.exists' => __('The selected building id is invalid.'),
-            'name.required' => __('The :attribute field is required.', ['attribute' => __('task')]),
+            'name.required' => __('The :attribute field is required.', ['attribute' => __('name')]),
             'name.unique' => __('There is already a :attribute with this name.', ['attribute' => __('task')]),
             'name.min' => __('The :attribute must be at least :min characters.', ['attribute' => __('task'), 'min' => self::NAME_MIN]),
             'name.max' => __('The :attribute may not be greater than :max characters.', ['attribute' => __('task'), 'max' => self::NAME_MAX]),

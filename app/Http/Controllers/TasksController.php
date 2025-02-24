@@ -24,7 +24,7 @@ class TasksController extends Controller
                     'success' => false,
                     'message' => __('Building not found.'),
                     'data' => []
-                ], 200);
+                ], 403);
             }
 
             foreach ($building->tasks as &$task) {
@@ -60,12 +60,12 @@ class TasksController extends Controller
             }
             
             $tasks  = Task::filters($filters, ['name', 'description'])->with('build', 'comments')->get();
-            if (! $tasks) {
+            if ($tasks->count() === 0) {
                 return response()->json([
                     'success' => false,
                     'message' => __('Tasks not found.'),
                     'data' => []
-                ], 200);
+                ], 403);
             }
 
             return response()->json([
@@ -106,7 +106,7 @@ class TasksController extends Controller
                     'success' => false,
                     'message' => __('An error occurred while saving the task.'),
                     'data' => []
-                ], 200);
+                ], 400);
             }
 
             return response()->json([
@@ -123,7 +123,7 @@ class TasksController extends Controller
                 'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
-            ], 200);
+            ], 500);
         }
     }
 
@@ -143,7 +143,7 @@ class TasksController extends Controller
                 return response()->json([
                     'message' => __('Task not found.'),
                     'data' => []
-                ], 200);
+                ], 403);
             }
 
             foreach ($validated as $key => $value) {
@@ -158,7 +158,7 @@ class TasksController extends Controller
                     'success' => false,
                     'message' => __('An error occurred while saving the task.'),
                     'data' => []
-                ], 200);
+                ], 400);
             }
 
             return response()->json([
@@ -176,7 +176,7 @@ class TasksController extends Controller
                 'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
-            ], 200);
+            ], 500);
         }
     }
 }
