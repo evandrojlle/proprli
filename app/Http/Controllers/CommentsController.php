@@ -27,12 +27,14 @@ class CommentsController extends Controller
             $comment = Comment::filters(['id' => $id])->first();
             if (! $comment) {
                 return response()->json([
+                    'success' => false,
                     'message' => __('Comment not found.'),
                     'data' => []
-                ], 200);
+                ], 403);
             }
 
             return response()->json([
+                'success' => true,
                 'message' => __('Show item found.'),
                 'data' => $comment,
             ], 200);
@@ -40,6 +42,7 @@ class CommentsController extends Controller
             Log::save('error', $e);
 
             return response()->json([
+                'success' => false,
                 'message' => 'error',
                 'error' => __('Ops! An error occurred while performing this action.')
             ], 500);
@@ -61,7 +64,7 @@ class CommentsController extends Controller
                     'success' => false,
                     'message' => __('Task not found.'),
                     'data' => []
-                ], 200);
+                ], 403);
             }
 
             $task->status_name = Status::from($task->status)->name;
@@ -104,7 +107,7 @@ class CommentsController extends Controller
                     'success' => false,
                     'message' => __('An error occurred while saving the comment.'),
                     'data' => []
-                ], 200);
+                ], 400);
             }
 
             return response()->json([
@@ -121,7 +124,7 @@ class CommentsController extends Controller
                 'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
-            ], 200);
+            ], 500);
         }
     }
 
@@ -141,7 +144,7 @@ class CommentsController extends Controller
                 return response()->json([
                     'message' => __('Comment not found.'),
                     'data' => []
-                ], 200);
+                ], 403);
             }
 
             foreach ($validated as $key => $value) {
@@ -156,7 +159,7 @@ class CommentsController extends Controller
                     'success' => false,
                     'message' => __('An error occurred while saving the comment.'),
                     'data' => []
-                ], 200);
+                ], 400);
             }
 
             return response()->json([
@@ -174,7 +177,7 @@ class CommentsController extends Controller
                 'success' => false,
                 'message' => __('Ops! An error occurred while performing this action.'),
                 'data' => [],
-            ], 200);
+            ], 500);
         }
     }
 }
