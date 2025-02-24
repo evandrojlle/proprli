@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 Route::post('auth', [AuthController::class, 'auth']);
 Route::middleware('auth:api')->group(function() {
     Route::get('/tasks/list/{building_id}', [TasksController::class, 'get']);

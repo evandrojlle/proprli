@@ -44,11 +44,17 @@ class Comment extends Model
         'updated_at' => 'datetime:d/m/Y \a\t H:i:s',
     ];
 
+    /**
+     * Get task relationship
+     */
     public function task(): HasOne
     {
         return $this->hasOne(Task::class);
     }
 
+    /**
+     * Get user relationship
+     */
     public function user(): HasOne
     {
         return $this->hasOne(User::class);

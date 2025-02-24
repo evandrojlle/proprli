@@ -46,16 +46,25 @@ class Task extends Model
         'updated_at' => 'datetime:d/m/Y \a\t H:i:s',
     ];
 
+    /**
+     * Get build relationship
+     */
     public function build(): BelongsTo
     {
         return $this->belongsTo(Building::class, 'building_id', 'id');
     }
 
+    /**
+     * Get user relationship
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    /**
+     * Get comments relationship
+     */
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'task_id');

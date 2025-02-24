@@ -47,6 +47,9 @@ class Building extends Model
         'updated_at' => 'datetime:d/m/Y \a\t H:i:s',
     ];
 
+    /**
+     * Get tasks relationship
+     */
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class, 'building_id');

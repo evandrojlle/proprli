@@ -46,7 +46,14 @@ class User extends Model
         'password' => 'hashed',
     ];
 
-    public static function userByEmail(string $pEmail, bool $makeVisible = false): array|self
+    /**
+     * Get user by email
+     * 
+     * @param string $pEmail - The user email
+     * @param bool $makeVisible - Defines whether the password should be visible.
+     * @return array|self
+     */
+    public static function userByEmail(string $pEmail, bool $pMakeVisible = false): array|self
     {
         $fetchRow = self::query()
             ->filters(['email' => $pEmail])
@@ -56,7 +63,7 @@ class User extends Model
             return [];
         }
 
-        if ($makeVisible) {
+        if ($pMakeVisible) {
             $fetchRow->makeVisible(['password']);
         }
 

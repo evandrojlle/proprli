@@ -15,6 +15,12 @@ class TasksController extends Controller
 {
     use Log;
 
+    /**
+     * Get Tasks by building id
+     *
+     * @param int $building_id - building id
+     * @return JsonResponse
+     */
     public function get(int $building_id)
     {
         try {
@@ -48,6 +54,11 @@ class TasksController extends Controller
         }
     }
 
+    /**
+     * Get Tasks by filters
+     *
+     * @return JsonResponse
+     */
     public function filters()
     {
         try {
